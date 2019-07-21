@@ -1,16 +1,20 @@
 #include <ecs_inheritance.h>
 
+/* This system only matches with the square_base entity */
 void AnimateSquare(ecs_rows_t *rows) {
     ECS_COLUMN(rows, EcsSquare, square, 1);
 
+    /* Iterates only once */
     for (int i = 0; i < rows->count; i ++) {
         square[i].size = sin(rows->world_time * 1.8) * 30.0 + 35;
     }
 }
 
+/* This system only matches with the shape_base entity */
 void AnimateColor(ecs_rows_t *rows) {
     ECS_COLUMN(rows, EcsColor, color, 1);
 
+    /* Iterates only once */
     for (int i = 0; i < rows->count; i ++) {
         color[i].r = ((cos(rows->world_time / 1.5) + 1) / 2) * 255.0;
         color[i].b = 200;
